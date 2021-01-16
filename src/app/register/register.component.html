@@ -1,0 +1,22 @@
+<div class="register-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-signin" (ngSubmit)="onSubmit(username.value, password.value, mail.value, name.value, confirmation.value)" #registerForm="ngForm">
+                <h1 class="h3 mb-3 fw-normal">Register form</h1>
+                <label for="inputEmail" class="visually-hidden">Username</label>
+                <input type="name" #username id="inputEmail" name="email" class="form-control" placeholder="Username" required autofocus ngModel>
+                <label for="inputPassword" class="visually-hidden">Password</label>
+                <input type="password" #password id="inputPassword" name="password" class="form-control" placeholder="Password" required ngModel>
+                <label for="inputConfirmation" class="visually-hidden">Password Confirmation</label>
+                <input type="password" #confirmation id="inputConfirmation" name="confirmation" class="form-control" placeholder="Confirmation" required ngModel>
+                <label for="inputName" class="visually-hidden">Name</label>
+                <input type="name" #name id="inputName" name="name" class="form-control" placeholder="Name" required ngModel>
+                <label for="inputMail" class="visually-hidden">Email</label>
+                <input type="email" #mail id="inputMail" name="mail" class="form-control" placeholder="Email" required ngModel>
+                <div class="buttons">
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

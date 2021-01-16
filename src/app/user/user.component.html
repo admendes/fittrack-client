@@ -1,0 +1,108 @@
+<div class="calendar">
+  <a [routerLink]="'/person'" class="nav-link">
+    <!--<p>user works!</p>-->
+    <!--<h4><u>{{'Email'}}</u> {{userI.user_username}}</h4>-->
+    <!--<button type="button" (click)="addEvent()">Click Me!</button>-->
+    <full-calendar id="myCalendar" [options]="calendarOptions"></full-calendar>
+  </a>
+</div>
+<div class="maincomp">
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Program</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="inputProgramName" class="visually-hidden">Program Name</label>
+        <input type="programName" #programName id="inputProgramName" name="programName" [(ngModel)]="user.type"
+          name="type{{user.id}}" class="form-control" placeholder="Name" required autofocus ngModel>
+        <label for="dateOfBirth">Program Date</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="user.date"
+            name="date{{user.id}}" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+        <label for="color">Event Color</label>
+
+        <select name="cars" id="cars" [(ngModel)]="user.color" name="color{{user.id}}">
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="purple">Purple</option>
+          <option value="black">Black</option>
+        </select>
+        <form #workoutForm="ngForm" class="container mt-3" (ngSubmit)="logValue()">
+          <button type="button" class="btn btn-primary mb-2" (click)="addWorkout()">Add Workout</button>
+          <section class="container border mb-4 p-3" *ngFor="let workout of workouts; let i = index;">
+            <div class="row">
+              <div class="col-6">
+                <h4>Workout {{i + 1}}</h4>
+              </div>
+              <div class="col-6 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeWorkout(i)">Remove</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="workout.name" name="name_{{workout.id}}"
+                    placeholder="Bicep Curls" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Sets</label>
+                  <input type="text" class="form-control" [(ngModel)]="workout.sets" name="sets_{{workout.id}}"
+                    placeholder="3" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Reps</label>
+                  <input type="text" class="form-control" [(ngModel)]="workout.reps" name="reps_{{workout.id}}"
+                    placeholder="12" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Weight (kg)</label>
+                  <input type="text" class="form-control" [(ngModel)]="workout.weight" name="weight{{workout.id}}"
+                    placeholder="12" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Time (min)</label>
+                  <input type="text" class="form-control" [(ngModel)]="workout.time" name="time{{workout.id}}"
+                    placeholder="10" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="text-right">
+            <input type="submit" class="btn btn-success" value="Submit" />
+          </div>
+
+
+        </form>
+      </div>
+    </form>
+  </div>
+  <!--<div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>-->
+</ng-template>
+<div class=button>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">New Program</button>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fitnesstracker';
+
+  calendarOptions = {
+    plugins: [dayGridPlugin],
+    initialView: 'dayGridMonth'
+  };
+
+  constructor(){
+    const name = Calendar.name; // add this line in your constructor
+  }
 }
