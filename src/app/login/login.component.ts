@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
     },
       (err: HttpErrorResponse) => {
         this.isLoginError = true;
+        alert('Wrong Password!');
         setTimeout(() => this.isLoginError = false, 1000);
         console.log(err);
       });

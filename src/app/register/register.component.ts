@@ -40,9 +40,12 @@ export class RegisterComponent implements OnInit {
    },
    (err : HttpErrorResponse)=>{
      this.isRegError = true;
+     alert('Error registering user!');
      setTimeout(()=>this.isRegError = false,1000);
    });
   }else{
+    alert('Passwords do not match!');
+
     console.log('error on logIn');
   }
   this.goToLogin();

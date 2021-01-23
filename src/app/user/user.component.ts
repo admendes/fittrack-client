@@ -153,6 +153,7 @@ export class UserComponent implements OnInit {
       },
       (err: HttpErrorResponse) => {
         this.isRequestError = true;
+        alert('Error contacting server!');
         setTimeout(() => this.isRequestError = false, 2500);
       });
 
